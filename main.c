@@ -26,7 +26,7 @@ char* IP = "192.168.1.130";
 int main( int argc, char* args[] )
 {
 
-    int sockfd, connfd;
+    /*int sockfd, connfd;
     struct sockaddr_in servaddr, cli;
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -43,7 +43,7 @@ int main( int argc, char* args[] )
     if (connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr)) != 0) {
         exit(0);
     }
-
+*/
     //Se inicializa la biblioteca SDL, en caso de fallar se muestra un mensaje de error
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0){
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"Error al inicializar SDL",SDL_GetError(),NULL);
@@ -98,8 +98,10 @@ int main( int argc, char* args[] )
             }
         }
 
-        if(handler->invaderList == NULL){
+        if(handler->invaderList == NULL||iterations == 1200){
             newEnemies(handler);
+            iterations = 0;
+            nave.vida+=1;
         }else if(handler->invaderList->data->y1 >= 560){
             gameOver = 1;
         }else{
@@ -108,7 +110,6 @@ int main( int argc, char* args[] )
         }
         if(iterations % 160 == 0){
             DispararInvaders(handler);
-            iterations = 0;
         }else if(iterations % 35 == 0){
             MoverInvaders(handler);
         }
@@ -126,7 +127,7 @@ int main( int argc, char* args[] )
         cJSON_AddItemToObject(b,"opcode",cJSON_CreateNumber(0));
         char * a = cJSON_Print(b);
 
-        send(sockfd,a,strlen(a),0);
+//        send(sockfd,a,strlen(a),0);
 
 
         //read(sockfd,buffer,4096);

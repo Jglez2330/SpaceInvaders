@@ -27,7 +27,7 @@ void NaveDispara(Nave *nave)
         nave->misiles->y1 = nave->y1;
         nave->misiles->x2 = nave->x1;
         nave->misiles->y2 = nave->y1 - MISIL_LEN;
-        nave->misiles->vy = -MISIL_VEL;
+        nave->misiles->vy = -10;
         nave->misiles->siguiente = NULL;
     }
     else{
@@ -41,7 +41,7 @@ void NaveDispara(Nave *nave)
         nuevoMisil->y1 = nave->y1;
         nuevoMisil->x2 = nave->x1;
         nuevoMisil->y2 = nave->y1 - MISIL_LEN;
-        nuevoMisil->vy = -MISIL_VEL;
+        nuevoMisil->vy = -10;
         nuevoMisil->siguiente = NULL;
     }
 }

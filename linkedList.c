@@ -87,7 +87,7 @@ cJSON* LtoJ(Node** head){
     return lista;
 
 }
-Node* JtoL(cJSON* json){
+/*Node* JtoL(cJSON* json){
     Node* head = NULL;
     int size = cJSON_GetArraySize(json);
     for (int i=0; i<size;i++){
@@ -108,4 +108,4 @@ Node* JtoL(cJSON* json){
 
     }
     return head;
-}
+}*/

@@ -2,6 +2,7 @@
 // Created by jose on 11/04/19.
 //
 
+#include <time.h>
 #include "InvaderHandler.h"
 
 
@@ -14,13 +15,15 @@ InvaderHandler* createHandler(){
 
 void newEnemies(InvaderHandler* handler){
     char* tipo;
+    srand(time(NULL));
+
     for(int i = 0; i < 7; i++){
-        if(handler->IDcounter % 3 == 0){
+        if(rand() % 3 == 0){
             tipo = "a";
-        }else if(handler->IDcounter % 3 == 1){
-            tipo = "a";
+        }else if(rand() % 3 == 1){
+            tipo = "b";
         }else{
-            tipo = "a";
+            tipo = "c";
         }
 
         Invader* invader = createInvader(tipo,i*100+100,100,handler->IDcounter);

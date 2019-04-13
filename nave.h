@@ -10,7 +10,6 @@
 #include "misil.h"
 
 #define MISIL_LEN 5
-#define MISIL_VEL 7
 
 
  typedef struct Nave{
