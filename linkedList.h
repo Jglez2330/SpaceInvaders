@@ -5,10 +5,11 @@
 #ifndef SPACEINVADERS_LINKEDLIST_H
 #define SPACEINVADERS_LINKEDLIST_H
 
+
 #include "invader.h"
 
 typedef struct Node{
-    struct Invader* data;
+    Invader* data;
     struct Node* next;
 }Node;
 

@@ -5,7 +5,10 @@
 #ifndef SPACEINVADERS_INVADERHANDLER_H
 #define SPACEINVADERS_INVADERHANDLER_H
 
+
+#include <SDL_render.h>
 #include "linkedList.h"
+#include "nave.h"
 
 typedef struct InvaderHandler{
     Node* invaderList;
@@ -22,8 +25,12 @@ void MoverInvaders(InvaderHandler* handler);
 
 void DispararInvaders(InvaderHandler* handler);
 
-void DibujarMisiles_Invaders(InvaderHandler* handler,SDL_Renderer *renderer,SDL_Texture *texture1,SDL_Texture *texture2,SDL_Texture *texture3);
+void DibujarInvaders(InvaderHandler* handler,SDL_Renderer *renderer);
 
-void EnemyBulletHandler(InvaderHandler* handler,SDL_Rect *bunker1,SDL_Rect *bunker2,SDL_Rect *bunker3);
+void EliminarMisiles(Nave* nave,InvaderHandler* handler);
+
+int EliminarMisilesInvaders(Nave *nave,InvaderHandler* handler);
+
+
 
 #endif //SPACEINVADERS_INVADERHANDLER_H

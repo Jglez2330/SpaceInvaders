@@ -2,22 +2,20 @@
 // Created by Fabricio on 9/4/2019.
 //
 
-#include <SDL2/SDL.h>
-#include <stdio.h>
-
 #ifndef PRUEBAINTERFAZ_MISIL_H
 #define PRUEBAINTERFAZ_MISIL_H
 
-typedef struct Misil Misil;
 
- struct Misil{
+#include <SDL_rect.h>
+
+typedef struct Misil{
     int x1,y1;
+    int x2,y2;
     int vy;
-    Misil *siguiente;
-};
+    struct Misil *siguiente;
+}Misil;
 
 void MisilAvanza (Misil *misil);
-void EliminarMisiles(Misil *misiles,SDL_Rect *bunker1,SDL_Rect *bunker2,SDL_Rect *bunker3);
 int colisiones(SDL_Rect *rect1, SDL_Rect *rect2);
 SDL_Rect crearRectanguloMisil(Misil *misil);
 

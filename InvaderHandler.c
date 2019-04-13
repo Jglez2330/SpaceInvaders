@@ -8,6 +8,7 @@
 InvaderHandler* createHandler(){
     InvaderHandler* handler = malloc(sizeof(InvaderHandler));
     handler->invaderList=createList();
+    handler->IDcounter = 0;
     return handler;
 }
 
@@ -32,39 +33,11 @@ void newEnemies(InvaderHandler* handler){
 }
 
 
-void DibujarMisiles_Invaders(InvaderHandler* handler,SDL_Renderer *renderer,SDL_Texture *texture1,SDL_Texture *texture2,SDL_Texture *texture3){
+void DibujarInvaders(InvaderHandler* handler,SDL_Renderer *renderer){
     Node* temp = handler->invaderList;
     while (temp != NULL){
 
-        Misil *nuevoMisil = temp->data->misiles;
-        while(nuevoMisil != NULL){
-            MisilAvanza(nuevoMisil);
-            SDL_Rect textureMisil;
-            textureMisil.x = nuevoMisil->x1;
-            textureMisil.y = nuevoMisil->y1;
-            textureMisil.w = 30;
-            textureMisil.h = 30;
-            SDL_RenderCopy(renderer, texture1, NULL, &textureMisil);
-            nuevoMisil = nuevoMisil->siguiente;
-        }
-
-        SDL_Rect textureInvader;
-        textureInvader.x = temp->data->x;
-        textureInvader.y = temp->data->y;
-        textureInvader.w = 65;
-        textureInvader.h = 65;
-        if(temp->data->tipo == 'a'){
-            SDL_RenderCopy(renderer, texture1, NULL, &textureInvader);
-        }
-
-        else if(temp->data->tipo == 'b'){
-            SDL_RenderCopy(renderer, texture2, NULL, &textureInvader);
-        }
-
-        else{
-            SDL_RenderCopy(renderer, texture3, NULL, &textureInvader);
-        }
-
+        DibujarInvader_Misiles(temp->data,renderer);
 
         temp = temp->next;
     }
@@ -91,12 +64,120 @@ void DispararInvaders(InvaderHandler* handler){
     }
 }
 
-void EnemyBulletHandler(InvaderHandler* handler,SDL_Rect *bunker1,SDL_Rect *bunker2,SDL_Rect *bunker3){
+SDL_Rect crearRectanguloInvader(Invader* invader)
+{
+    SDL_Rect retorno;
+    retorno.x = invader->x1-20;
+    retorno.y = invader->y1;
+    retorno.w = 50;
+    retorno.h = 20;
+    return retorno;
+
+}
+
+SDL_Rect crearRectanguloNave(Nave* nave)
+{
+    SDL_Rect retorno;
+    retorno.x = nave->x1-20;
+    retorno.y = nave->y1;
+    retorno.w = 50;
+    retorno.h = 20;
+    return retorno;
+
+}
+
+
+void EliminarMisiles(Nave *nave,InvaderHandler* handler) {
+    Misil *misil = nave->misiles;
+    if (misil == NULL) {
+
+        return;
+    }
+    Misil *auxMisil = NULL;
+    while (misil != NULL) {
+        SDL_Rect rectMisil = crearRectanguloMisil(misil);
+        Node *temp = handler->invaderList;
+        while (temp != NULL) {
+            SDL_Rect rectInvader = crearRectanguloInvader(temp->data);
+            if (colisiones(&rectMisil, &rectInvader)) {
+                if (auxMisil == NULL) {
+                    nave->misiles = misil->siguiente;
+
+                } else {
+                    auxMisil->siguiente = misil->siguiente;
+
+                }
+                temp->data->vida -= 1;
+
+                SDL_free(misil);
+                if (temp->data->vida == 0) {
+                    nave->puntuacion += temp->data->puntos;
+                    printf("Puntuación: %d\n", nave->puntuacion);
+                    delete(&handler->invaderList, temp->data->ID);
+                }
+                return;
+            }
+
+            temp = temp->next;
+
+        }
+
+        if (misil->y1 < 0) {
+            if (auxMisil == NULL) {
+                nave->misiles = misil->siguiente;
+
+            } else {
+                auxMisil->siguiente = misil->siguiente;
+
+            }
+            SDL_free(misil);
+            break;
+        }
+
+        auxMisil = misil;
+        misil = misil->siguiente;
+
+    }
+}
+int EliminarMisilesInvaders(Nave *nave,InvaderHandler* handler){
     Node* temp = handler->invaderList;
     while (temp != NULL){
 
-        EliminarMisiles(temp->data->misiles,bunker1,bunker2,bunker3);
+        Misil *misil = temp->data->misiles;
+        if(misil == NULL) {
+            temp = temp->next;
+        }else{
 
+            Misil* auxMisil = NULL;
+            while (misil != NULL) {
+                SDL_Rect rectMisil = crearRectanguloMisil(misil);
+                SDL_Rect rectNave = crearRectanguloNave(nave);
+                if (colisiones(&rectMisil, &rectNave)) {
+
+                    if (auxMisil == NULL) {
+                        temp->data->misiles = misil->siguiente;
+                    } else {
+                        auxMisil->siguiente = misil->siguiente;
+                    }
+                    nave->vida -= 1;
+                    printf("Vida restante: %d\n",nave->vida);
+
+                    SDL_free(misil);
+                    if (nave->vida == 0) {
+                        return 1;
+                    }
+                    return 0;
+                }
+                auxMisil = misil;
+                misil = misil->siguiente;
+            }
+
+        }
         temp = temp->next;
+
     }
+    return 0;
 }
+
+
+

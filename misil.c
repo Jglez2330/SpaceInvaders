@@ -8,31 +8,11 @@
 void MisilAvanza(Misil *misil)
 {
     misil->y1 += misil->vy;
+    misil->y2 += misil->vy;
 }
 
 //Función que libera la memoria de los misiles que salen del rango de la pantalla
-void EliminarMisiles(Misil *misiles,SDL_Rect *bunker1,SDL_Rect *bunker2,SDL_Rect *bunker3)
-{
-    Misil *misil = misiles;
-    if(misil == NULL){
-        return;
-    }
 
-    Misil *auxMisil;
-    while (misil->siguiente != NULL){
-        SDL_Rect rectMisil = crearRectanguloMisil(misil->siguiente);
-        if((misil->siguiente->y1 < 0) | (colisiones(&rectMisil,bunker1) == 1) | (colisiones(&rectMisil,bunker2) == 1)
-           | (colisiones(&rectMisil,bunker3) == 1)){
-            auxMisil = misil->siguiente->siguiente;
-            SDL_free(misil->siguiente);
-            misil->siguiente = auxMisil;
-        }
-        else{
-            misil = misil->siguiente;
-        }
-    }
-
-}
 
 int colisiones(SDL_Rect *rect1, SDL_Rect *rect2)
 {
@@ -54,14 +34,14 @@ int colisiones(SDL_Rect *rect1, SDL_Rect *rect2)
 
 }
 
-//Funci�n que crea un rect�ngulo de un misil dado
 SDL_Rect crearRectanguloMisil(Misil *misil)
 {
     SDL_Rect retorno;
     retorno.x = misil->x1;
     retorno.y = misil->y1;
-    retorno.w = 90;
-    retorno.h = 90;
+    retorno.w = 3;
+    retorno.h = 3;
     return retorno;
 
 }
+

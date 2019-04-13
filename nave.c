@@ -6,22 +6,16 @@
 
 //Función que mueve la nave a la derecha
 void NaveAvanzaDer(Nave *nave){
-    if(nave->x1 >= 900){
-        return;
-    }
-    else{
-        nave->x1 += nave->vx;
-    }
+    nave->x1 += nave->vx;
+    nave->x2 += nave->vx;
+    nave->x3 += nave->vx;
 }
 
 //Función que mueve la nave a la izquierda
 void NaveAvanzaIzq(Nave *nave){
-    if(nave->x1 <= 20){
-        return;
-    }
-    else{
-        nave->x1 -= nave->vx;
-    }
+    nave->x1 -= nave->vx;
+    nave->x2 -= nave->vx;
+    nave->x3 -= nave->vx;
 }
 
 //Función que dispara los misiles de la nave
@@ -31,6 +25,8 @@ void NaveDispara(Nave *nave)
         nave->misiles = (Misil *) SDL_malloc(sizeof(Misil));
         nave->misiles->x1 = nave->x1;
         nave->misiles->y1 = nave->y1;
+        nave->misiles->x2 = nave->x1;
+        nave->misiles->y2 = nave->y1 - MISIL_LEN;
         nave->misiles->vy = -MISIL_VEL;
         nave->misiles->siguiente = NULL;
     }
@@ -43,31 +39,29 @@ void NaveDispara(Nave *nave)
         nuevoMisil = nuevoMisil->siguiente;
         nuevoMisil->x1 = nave->x1;
         nuevoMisil->y1 = nave->y1;
+        nuevoMisil->x2 = nave->x1;
+        nuevoMisil->y2 = nave->y1 - MISIL_LEN;
         nuevoMisil->vy = -MISIL_VEL;
         nuevoMisil->siguiente = NULL;
     }
 }
 
-void DibujarNave_Misiles(Nave *nave, SDL_Renderer *renderer, SDL_Texture *texture1, SDL_Texture *texture2)
+void DibujarNave_Misiles(Nave *nave, SDL_Renderer *renderer)
 {
     //Dibujar Misiles
     Misil *nuevoMisil = nave->misiles;
     while(nuevoMisil != NULL){
         MisilAvanza(nuevoMisil);
-        SDL_Rect textureMisil;
-        textureMisil.x = nuevoMisil->x1;
-        textureMisil.y = nuevoMisil->y1;
-        textureMisil.w = 30;
-        textureMisil.h = 30;
-        SDL_RenderCopy(renderer, texture1, NULL, &textureMisil);
+        SDL_RenderDrawLine(renderer,nuevoMisil->x1,nuevoMisil->y1,nuevoMisil->x2,nuevoMisil->y2);
         nuevoMisil = nuevoMisil->siguiente;
     }
 
-    //Dibujar Nave del usuario
-    SDL_Rect textureNave;
-    textureNave.x = nave->x1;
-    textureNave.y = nave->y1;
-    textureNave.w = 90;
-    textureNave.h = 90;
-    SDL_RenderCopy(renderer, texture2, NULL, &textureNave);
+    //DibujarNave
+    SDL_Point points[4] = {
+            {nave->x1, nave->y1},
+            {nave->x2, nave->y2},
+            {nave->x3, nave->y3}
+    };
+    points[3] = points[0];
+    SDL_RenderDrawLines(renderer,points,4);
 }
