@@ -87,4 +87,25 @@ cJSON* LtoJ(Node** head){
     return lista;
 
 }
+Node* JtoL(cJSON* json){
+    Node* head = NULL;
+    int size = cJSON_GetArraySize(json);
+    for (int i=0; i<size;i++){
+        Invader* invader = createInvader("a",0,0,0);
+        cJSON* jasonsito = cJSON_DetachItemFromArray(json,i);
+        invader->tipo = (char*) cJSON_DetachItemFromObject(jasonsito,"tipo");
+        invader->vida = (int) cJSON_DetachItemFromObject(jasonsito,"vida");
+        invader->puntos = (int)cJSON_DetachItemFromObject(jasonsito,"puntos");
+        invader->ID =(int)cJSON_DetachItemFromObject(jasonsito,"ID");
+        invader->x1 =(int)cJSON_DetachItemFromObject(jasonsito,"x1");
+        invader->y1 =(int)cJSON_DetachItemFromObject(jasonsito,"y1");
+        invader->x2 =(int)cJSON_DetachItemFromObject(jasonsito,"x2");
+        invader->y2 =(int)cJSON_DetachItemFromObject(jasonsito,"y2");
+        invader->x3 =(int)cJSON_DetachItemFromObject(jasonsito,"x3");
+        invader->y3 =(int)cJSON_DetachItemFromObject(jasonsito,"y3");
+        add(&head,invader);
+        cJSON_Delete(jasonsito);
 
+    }
+    return head;
+}

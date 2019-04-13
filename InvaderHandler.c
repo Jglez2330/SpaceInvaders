@@ -172,8 +172,8 @@ int EliminarMisilesInvaders(Nave *nave,InvaderHandler* handler){
                 misil = misil->siguiente;
             }
 
+            temp = temp->next;
         }
-        temp = temp->next;
 
     }
     return 0;
