@@ -45,3 +45,30 @@ SDL_Rect crearRectanguloMisil(Misil *misil)
 
 }
 
+cJSON* MLtoJ(Misil* misil){
+    cJSON* misilJSON = cJSON_CreateArray();
+
+    Misil* actual = misil;
+    while (actual != NULL) {
+
+        cJSON *x1 = cJSON_CreateNumber(misil->x1);
+        cJSON *y1 = cJSON_CreateNumber(misil->y1);
+        cJSON *x2 = cJSON_CreateNumber(misil->x2);
+        cJSON *y2 = cJSON_CreateNumber(misil->y2);
+        cJSON *vy = cJSON_CreateNumber(misil->vy);
+
+        cJSON* temp = cJSON_CreateObject();
+
+        cJSON_AddItemToObject(temp,"x1",x1);
+        cJSON_AddItemToObject(temp,"y1",y1);
+        cJSON_AddItemToObject(temp,"x2",x2);
+        cJSON_AddItemToObject(temp,"y2",y2);
+        cJSON_AddItemToObject(temp,"vy",vy);
+
+        cJSON_AddItemToArray(misilJSON,temp);
+
+        actual = actual->siguiente;
+    }
+
+    return misilJSON;
+}

@@ -7,6 +7,7 @@
 
 
 #include "invader.h"
+#include "cJSON.h"
 
 typedef struct Node{
     Invader* data;
@@ -22,4 +23,6 @@ void printList(Node* head);
 void delete(Node** head, int target);
 
 void  deleteList(Node** head);
+
+cJSON* LtoJ(Node** head);
 #endif //SPACEINVADERS_LINKEDLIST_H

@@ -6,7 +6,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "linkedList.h"
-
+#include "cJSON.h"
+int numeroLista = 0;
 Node* createList(){
     Node* head = NULL;
     return head;
@@ -71,3 +72,19 @@ void deleteList(Node** head){
         }
     }
 }
+
+cJSON* LtoJ(Node** head){
+    Node* actual = *head;
+    cJSON* lista = cJSON_CreateObject();
+    cJSON* listaArray = cJSON_CreateArray();
+    while (actual != NULL){
+        cJSON_AddItemToArray(listaArray,ItoJ(actual->data));
+        actual = actual->next;
+
+    }
+
+    cJSON_AddItemToObject(lista,"lista",listaArray);
+    return lista;
+
+}
+

@@ -13,14 +13,14 @@ InvaderHandler* createHandler(){
 }
 
 void newEnemies(InvaderHandler* handler){
-    char tipo;
+    char* tipo;
     for(int i = 0; i < 7; i++){
         if(handler->IDcounter % 3 == 0){
-            tipo = 'a';
+            tipo = "a";
         }else if(handler->IDcounter % 3 == 1){
-            tipo = 'b';
+            tipo = "a";
         }else{
-            tipo = 'c';
+            tipo = "a";
         }
 
         Invader* invader = createInvader(tipo,i*100+100,100,handler->IDcounter);

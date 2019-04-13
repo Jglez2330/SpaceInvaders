@@ -11,7 +11,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
 find_package(SDL2 REQUIRED)
 
-add_executable(SpaceInvaders main.c invader.c invader.h linkedList.c linkedList.h InvaderHandler.h InvaderHandler.c misil.c misil.h nave.c nave.h bunker.c bunker.h)
+add_executable(SpaceInvaders main.c invader.c invader.h linkedList.c linkedList.h InvaderHandler.h InvaderHandler.c misil.c misil.h nave.c nave.h bunker.c bunker.h cJSON.c cJSON.h Clientes.c Clientes.h)
 
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2TTF_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2Mixer_INCLUDE_DIR})
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY} ${SDL2TTF_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2Mixer_LIBRARY})

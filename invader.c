@@ -3,7 +3,7 @@
 //
 // Created by jose on 08/04/19.
 //
-Invader* createInvader(char tipo, int posX, int posY, int ID){
+Invader* createInvader(char* tipo, int posX, int posY, int ID){
     Invader* alien = malloc(sizeof(Invader));
     alien->tipo = tipo;
     alien->x1 = posX;
@@ -11,14 +11,14 @@ Invader* createInvader(char tipo, int posX, int posY, int ID){
 
     alien->ID = ID;
     alien->misiles = NULL;
-    if(tipo == 'a'){
+    if(*tipo == 'a'){
         alien->puntos = 10;
         alien->vida = 2;
         alien->x2 = posX-20;
         alien->y2 = posY-20;
         alien->x3 = posX+20;
         alien->y3 = posY-20;
-    }else if(tipo == 'b'){
+    }else if(*tipo == 'b'){
         alien->puntos = 20;
         alien->vida = 3;
         alien->x2 = posX-20;
@@ -92,3 +92,31 @@ void DibujarInvader_Misiles(Invader* invader, SDL_Renderer *renderer)
     SDL_RenderDrawLines(renderer,points,4);
 }
 
+cJSON* ItoJ(Invader* invader){
+    cJSON* invaderJSON = cJSON_CreateObject();
+    cJSON* tipo = cJSON_CreateString(invader->tipo);
+    cJSON* vida = cJSON_CreateNumber(invader->vida);
+    cJSON* puntos = cJSON_CreateNumber(invader->puntos);
+    cJSON* ID = cJSON_CreateNumber(invader->ID);
+    cJSON* x1 = cJSON_CreateNumber(invader->x1);
+    cJSON* y1 = cJSON_CreateNumber(invader->y1);
+    cJSON* x2 = cJSON_CreateNumber(invader->x2);
+    cJSON* y2 = cJSON_CreateNumber(invader->y2);
+    cJSON* x3 = cJSON_CreateNumber(invader->x3);
+    cJSON* y3 = cJSON_CreateNumber(invader->y3);
+
+    cJSON_AddItemToObject(invaderJSON,"tipo",tipo);
+    cJSON_AddItemToObject(invaderJSON,"vida",vida);
+    cJSON_AddItemToObject(invaderJSON,"puntos",puntos);
+    cJSON_AddItemToObject(invaderJSON,"ID",ID);
+    cJSON_AddItemToObject(invaderJSON,"x1",x1);
+    cJSON_AddItemToObject(invaderJSON,"y1",y1);
+    cJSON_AddItemToObject(invaderJSON,"x2",x2);
+    cJSON_AddItemToObject(invaderJSON,"y2",y2);
+    cJSON_AddItemToObject(invaderJSON,"x3",x3);
+    cJSON_AddItemToObject(invaderJSON,"y3",y3);
+
+    cJSON_AddItemToObject(invaderJSON,"misiles",MLtoJ(invader->misiles));
+
+    return invaderJSON;
+}

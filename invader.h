@@ -8,13 +8,14 @@
 
 #include <SDL_render.h>
 #include "misil.h"
+#include "cJSON.h"
 
 #define MISIL_LEN 5
 #define MISIL_VEL 10
 
 
 typedef struct Invader{
-    char tipo; //'a' calamar, 'b' cangrejo, 'c' pulpo
+    char* tipo; //'a' calamar, 'b' cangrejo, 'c' pulpo
     int vida, puntos;
     int ID;
     int x1,y1;
@@ -24,12 +25,14 @@ typedef struct Invader{
     Misil *misiles;
 }Invader;
 
-Invader* createInvader(char tipo, int posX, int posY,int ID);
+Invader* createInvader(char* tipo, int posX, int posY,int ID);
 
 void InvaderAvanza(Invader* invader);
 
 void InvaderDispara(Invader* invader);
 
 void DibujarInvader_Misiles(Invader* invader, SDL_Renderer *renderer);
+
+cJSON* ItoJ(Invader* invader);
 
 #endif //SPACEINVADERS_INVADER_H

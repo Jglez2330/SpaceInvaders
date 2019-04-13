@@ -7,6 +7,7 @@
 
 
 #include <SDL_rect.h>
+#include "cJSON.h"
 
 typedef struct Misil{
     int x1,y1;
@@ -18,5 +19,7 @@ typedef struct Misil{
 void MisilAvanza (Misil *misil);
 int colisiones(SDL_Rect *rect1, SDL_Rect *rect2);
 SDL_Rect crearRectanguloMisil(Misil *misil);
+
+cJSON* MLtoJ(Misil* misil);
 
 #endif //PRUEBAINTERFAZ_MISIL_H

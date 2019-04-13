@@ -6,6 +6,13 @@
 #include "InvaderHandler.h"
 #include "misil.h"
 
+#include <netdb.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+
 #define XSIZE  800 //Macro del tamaño de la pantalla en X
 #define YSIZE  600 //Macro del tamaño de la pantalla en Y
 #define NAVEY  540 //Macro de la posición inicial de la nave en Y
@@ -13,9 +20,30 @@
 #define MS 10 // Macro de los milisegundos
 
 
-
+int PORT = 5555;
+char buffer[4096];
+char* IP = "192.168.1.130";
 int main( int argc, char* args[] )
 {
+
+    int sockfd, connfd;
+    struct sockaddr_in servaddr, cli;
+
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd == -1) {
+        exit(0);
+    }
+
+    bzero(&servaddr, sizeof(servaddr));
+
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_addr.s_addr = inet_addr(IP);
+    servaddr.sin_port = htons(PORT);
+
+    if (connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr)) != 0) {
+        exit(0);
+    }
+
     //Se inicializa la biblioteca SDL, en caso de fallar se muestra un mensaje de error
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0){
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"Error al inicializar SDL",SDL_GetError(),NULL);
@@ -92,6 +120,20 @@ int main( int argc, char* args[] )
 
 
         //Se dibuja en la pantalla
+
+        cJSON* b = LtoJ(&handler->invaderList);
+
+        cJSON_AddItemToObject(b,"opcode",cJSON_CreateNumber(0));
+        char * a = cJSON_Print(b);
+
+        send(sockfd,a,strlen(a),0);
+
+
+        //read(sockfd,buffer,4096);
+
+        free(a);
+        cJSON_Delete(b);
+
         SDL_SetRenderDrawColor(renderer,0,0,0,0);// RGB del color negro
         SDL_RenderClear(renderer);
         SDL_SetRenderDrawColor(renderer,255,255,255,0);//RGB del color blanco
@@ -107,6 +149,9 @@ int main( int argc, char* args[] )
         SDL_Delay(MS); // Tiempo de espera en milisegundos
 
         iterations++;
+
+
+
 
     }
 
