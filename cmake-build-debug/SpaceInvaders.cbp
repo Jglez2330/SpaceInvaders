@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="SpaceInvaders"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\CMAKE\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SpaceInvaders">
+				<Option output="/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/bin/SpaceInvaders" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL2"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpaceInvaders"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SpaceInvaders/fast">
+				<Option output="/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/bin/SpaceInvaders" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL2"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpaceInvaders/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/jose/CLionProjects/SpaceInvaders/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/InvaderHandler.c">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/InvaderHandler.h">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/bunker.c">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/bunker.h">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/invader.c">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/invader.h">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/linkedList.c">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/linkedList.h">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/main.c">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/misil.c">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/misil.h">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/nave.c">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/nave.h">
+			<Option target="SpaceInvaders"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/jose/CLionProjects/SpaceInvaders/CMAKE/FindSDL2.cmake">
+			<Option virtualFolder="CMake Files\CMAKE\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jose/CLionProjects/SpaceInvaders/InvaderHandler.c
+InvaderHandler.h
+/home/jose/CLionProjects/SpaceInvaders/InvaderHandler.h
+
+/home/jose/CLionProjects/SpaceInvaders/InvaderHandler.h
+linkedList.h
+/home/jose/CLionProjects/SpaceInvaders/linkedList.h
+
+/home/jose/CLionProjects/SpaceInvaders/invader.h
+misil.h
+/home/jose/CLionProjects/SpaceInvaders/misil.h
+
+/home/jose/CLionProjects/SpaceInvaders/linkedList.h
+invader.h
+/home/jose/CLionProjects/SpaceInvaders/invader.h
+
+/home/jose/CLionProjects/SpaceInvaders/misil.h
+SDL2/SDL.h
+-
+stdio.h
+-
+
